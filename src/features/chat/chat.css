@@ -1,0 +1,6 @@
+.chat-container {
+    display: flex;
+    flex: 1;
+    margin-top: 70px;
+    background-color: aqua;
+}
