@@ -53,6 +53,7 @@ const Listing = () => {
 
   return (
     <div className="listingContainer">
+      <div className="qqq">
       <div className="listingTitleSection">
         <h2 className="listingTitle">{`${obj.title}`}</h2>
         <div className="listingTitleDetails">
@@ -69,6 +70,7 @@ const Listing = () => {
         <img src={pic} id="listingImages" className="bgInbonx3"></img>
         <img src={pic} id="listingImages" className="bgInbonx4"></img>
         <img src={pic} id="listingImages" className="bgInbonx5"></img>
+      </div>
       </div>
       <div className="listingContentContainer">
         <div className="listingContentHost">
@@ -196,7 +198,7 @@ const Listing = () => {
           </div>
         </div>
 
-        <div className="listingBottomRight"></div>
+        <div className="listingBottomRight">.</div>
       </div>
     </div>
   );

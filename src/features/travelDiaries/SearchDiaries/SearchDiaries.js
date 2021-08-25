@@ -62,7 +62,7 @@ const SearchDiaries = () => {
     <div>
       {post != null ? (
         <>
-          <div>
+          <div className="searchdiary-main">
             <Button className="button" onClick={handleOpen}></Button>
             <FormControl className={classes.formControl}>
               <InputLabel id="demo-controlled-open-select-label">

@@ -156,11 +156,18 @@
 }
 
 @media screen and (max-width: 768px) {
+  .qqq {
+    flex-direction: column-reverse;
+    display: flex;
+  }
   .listingTitleSection {
     width: auto;
     padding: 0;
     display: block;
     flex-direction: none;
+    font-size: 12px;
+    margin-top: 3%;
+    margin-bottom: 3%;
   }
   .bgInbonx1 {
     width: 100%;
@@ -191,12 +198,39 @@
     padding: 0;
     grid-gap: 0;
     gap: 0;
+  }
+  .listingContentContainer {
+    padding: 0;
+    display: block;
+  }
+  .listingBottom {
+    padding: 0 !important;
+  }
+  .listingContainer {
+    margin-top: 18%;
+    padding: 2%;
+    width: auto;
+  }
+  .listingContentHost {
+    width: auto;
+    margin-bottom: 7%;
+  }
+  .listingContentContainerRight {
+    width: auto;
+    margin-left: auto;
+    margin-bottom: 7%;
 }
-.listingContentContainer {
-  padding: 0;
+.listingBottomLeft {
+  width: auto;
+}
+.listingTitleDesc {
+  padding: 1%;
+  margin: 1%;
+}
+.listingTitleDetails{
+  font-size: 11px;
+}
+.listingBottom {
   display: block;
-}
-.listingBottom{
-  padding: 0 !important;
 }
 }
