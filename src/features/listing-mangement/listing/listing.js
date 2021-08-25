@@ -138,11 +138,8 @@ const Listing = () => {
           </div>
         </div>
       </div>
-      <div
-        ClassName="listingBottom"
-        style={{ padding: "10px 150px 40px 150px" }}
-      >
-        <div className="listingBottomLeft">
+      <div className="listingBottom">
+        <div className="listingBottomLeft ">
           <div className="listingBottomLeft-layout">
             <div className="listingBottomLeft-desc">
               <p>
