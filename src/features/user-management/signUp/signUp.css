@@ -1,59 +1,88 @@
 .signUpContainer {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-end;
-    /* background-color: #f5fafe; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  /* background-color: #f5fafe; */
+}
+
+.signUpSection {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 50%;
+  padding: 0 5.4% 0 5.4%;
+  align-content: center;
+  justify-content: center;
+}
+
+.signUpWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  height: 30%;
+  width: 50%;
+  margin: auto;
+  line-height: 0;
+}
+#signUpInputs {
+  width: 100%;
+}
+#signUpButton {
+  color: white;
+  background-color: tomato;
+  width: 100%;
+  margin-top: 50px;
+  height: 60%;
+}
+.signUpInputsWrapper {
+  display: flex;
+  margin: 20px 0 20px 0;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+}
+.imageSection {
+  width: 50%;
+}
+.signUpBgImage {
+  width: 160%;
+  height: 90%;
+  margin-top: 50px;
+  margin-right: 10px;
+}
+.logo {
+  position: absolute;
+  left: 4%;
+  top: 2%;
+}
+.mob {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .mob {
+    display: block;
   }
-  
-  .signUpSection {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 50%;
-    padding: 0 5.4% 0 5.4%;
-    align-content: center;
-    justify-content: center;
-  }
-  
-  .signUpWrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    height: 30%;
-    width: 50%;
-    margin: auto;
-  }
-  #signUpInputs {
-    width: 100%;
-  }
-  #signUpButton {
-    color: white;
-    background-color: tomato;
-    width: 100%;
-    margin-top: 50px;
-    height: 60%;
-  }
-  .signUpInputsWrapper {
-    display: flex;
-    margin: 20px 0 20px 0;
-    justify-content: center;
-    width: 100%;
-    flex-direction: column;
+  .web {
+    display: none;
   }
   .imageSection {
-    width: 50%;
+    display: none;
   }
-  .signUpBgImage {
-    width: 160%;
-    height: 90%;
-    margin-top: 50px;
-    margin-right: 10px;
+  .signUpContainer {
+    display: block;
+    margin-top: -37%;
   }
-  .logo {
-   position:absolute;
-   left:4%;
-   top:2%;
+  .signUpSection {
+    width: auto;
   }
-  
+  .signUpWrapper {
+    width: auto;
+    display: block;
+  }
+  .signUpSection {
+    display: block;
+    margin-top: 69%;
+  }
+}

@@ -46,13 +46,19 @@
 
   border-radius: 4px;
 }
-
+.searchdiary-main {
+  margin-top: 6%;
+}
 @media screen and (max-width: 768px) {
   .card-main {
     padding: 11px;
   }
   .searchdiary-main {
-    margin-top: 15%;
-    margin-left: 11%;
+    margin-top: 17%;
+    /* margin-left: 11%; */
+  }
+  .makeStyles-formControl-7 {
+    margin: 8px;
+    min-width: 197px !important;
 }
 }

@@ -30,17 +30,17 @@ const Login = () => {
 
   return (
     <div className="loginContainer">
-      <h1 className="logo">Logo</h1>
       <div className="imageSection">
         <img src={loginBg} className="loginBgImage"></img>
       </div>
       <div className="loginSection">
         <div className="loginWrapper">
-          <h1 style={{ position: "absolute", top: "10%" }}>Get Started</h1>
-          <p style={{ position: "absolute", top: "16%", color: "lightgray" }}>
+          <h1 className="web" >Get Started</h1>
+          <h1  className="mob">Login</h1>
+          <p className="web" style={{  color: "lightgray" }}>
             Let's get going
           </p>
-          <h3>Login</h3>
+          <h3 className="web">Login</h3>
           <div className="loginInputsWrapper">
             <TextField
               name="email"

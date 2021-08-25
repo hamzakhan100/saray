@@ -24,7 +24,6 @@
   height: 30%;
   width: 50%;
   margin: auto;
-  
 }
 #loginInputs {
   width: 100%;
@@ -53,7 +52,33 @@
   margin-right: 10px;
 }
 .logo {
- position:absolute;
- left:10%;
- top:2%;
+  position: absolute;
+  left: 10%;
+  top: 2%;
+}
+.mob {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .mob {
+    display: block;
+  }
+  .web {
+    display: none;
+  }
+  .imageSection {
+    display: none;
+  }
+  .loginContainer {
+    display: block;
+    margin-top: 2%;
+  }
+  .loginSection {
+    width: auto;
+  }
+  .loginWrapper {
+    width: auto;
+    margin: inherit;
+    line-height: 0;
+  }
 }
