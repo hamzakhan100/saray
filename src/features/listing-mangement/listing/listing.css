@@ -1,0 +1,126 @@
+.listingContainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+
+  flex-direction: column;
+}
+.listingImageContainer {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "main g h"
+    "main j k ";
+
+  height: 55%;
+
+  padding: 10px 150px 40px 150px;
+  gap: 10px;
+}
+.imageBox {
+}
+.bgInbonx1 {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  grid-area: main;
+}
+.bgInbonx2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+.bgInbonx3 {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+.bgInbonx4 {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+.bgInbonx5 {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+.listingTitle {
+  padding: 0;
+  margin: 0;
+}
+.listingTitleSection {
+  /* width: 100%; */
+  padding: 100px 150px 0 150px;
+  display: flex;
+  flex-direction: column;
+}
+.listingTitleDetail {
+}
+.listingTitleDesc {
+  padding: 0;
+  margin: 0 0 0 0;
+}
+
+.listingContentContainer {
+  padding: 10px 150px 40px 150px;
+  display: flex;
+}
+.listingContentHostImage {
+  object-fit: cover;
+  height: 112px;
+  width: 88px;
+  border-radius: 5px;
+}
+.listingContentHostImageContainer {
+  display: flex;
+  height: 20%;
+}
+
+.listingContentHost {
+  display: flex;
+  border-bottom: 1px solid grey;
+  max-height: 38%;
+  width: 50%;
+  border: 0.1rem solid rgba(0, 47, 52, 0.2);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.listingContentHostDetails {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 10px;
+  width: 100%;
+}
+.listingContentContainerRight {
+  width: 50%;
+  margin-left: 1%;
+}
+.listingContentContainerRightLayout{
+  border: 0.1rem solid rgba(0, 47, 52, 0.2);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.startday{
+  width: 50%;
+  margin-right: 4%;
+}
+.endday{
+  width: 50%;
+}
+.price{
+  margin-left: 6%;
+}
+.listingButton{
+  margin-bottom: 3%;
+  margin-top: 30%;
+}
+#listingbutton {
+  color: white;
+  background-color: tomato;
+  width: 90%;
+  /* margin-top: 50px; */
+  height: 60%;
+  margin-left: 3%;}

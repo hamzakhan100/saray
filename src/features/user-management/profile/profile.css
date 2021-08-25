@@ -1,0 +1,85 @@
+.profileContainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.profileContainer > * {
+  padding-top: 4%;
+}
+
+#avatarProfile {
+  align-self: center;
+  justify-self: center;
+  width: 120px;
+  height: 120px;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  background-color: lightgreen;
+  width: 45%;
+  justify-content: center;
+  align-content: center;
+}
+.mid {
+  display: flex;
+  background-color: lightpink;
+  width: 100%;
+}
+.right {
+  display: flex;
+  background-color: lightsalmon;
+  width: 45%;
+}
+
+.avatarContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.profileNavLinks {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: auto;
+  text-align: left;
+}
+.profileAnchorLinks {
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-left: 30%;
+  margin-right: 30%;
+  font-weight: 800;
+  border-radius: 50px;
+}
+.profileAnchorLinks:hover {
+  cursor: pointer;
+  background-color: rgb(96, 189, 108, 0.6);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.profileAnchorWrapper {
+  padding: 20px;
+}
+.profileCreatePost {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: white;
+  width: 100%;
+  height: 10%;
+}
+
+#profileButton{
+  width:50%;
+ 
+  border-radius: 50px;
+  align-self: flex-start;
+  margin: 6% 32% 0 32% ;
+  
+
+}

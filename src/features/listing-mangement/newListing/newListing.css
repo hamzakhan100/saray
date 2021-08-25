@@ -1,0 +1,186 @@
+.newListingContainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  margin-top: 6%;
+}
+.newListingLeft {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.newListingRight {
+  width: 50%;
+  padding-top: 2%;
+}
+.newListingInputWrapper {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  flex-direction: column;
+  align-content: center;
+  padding-left: 30%;
+  padding-right: 30%;
+}
+.newListingInputWrapperGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30%;
+  padding-right: 30%;
+  margin: 20px;
+}
+.newListingBg {
+  width: 70%;
+  height: 70%;
+  margin: 15% 0 0 20%;
+  /* box-shadow: 0 4px 4px rgba(); */
+  animation-name: newListingBgAnimation;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+@keyframes newListingBgAnimation {
+  0% {
+    margin-top: 15%;
+    margin-left: 20%;
+  }
+
+  50% {
+    margin-top: 14.5%;
+    margin-left: 19.5%;
+  }
+  100% {
+    margin-top: 15%;
+    margin-left: 20%;
+  }
+}
+
+.newListingAmenitiesWrapper {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+  flex-wrap: wrap;
+  width: 60%;
+}
+
+#amenitiesButton {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  border: 1px solid;
+  border-radius: 5px;
+  background-color: transparent;
+}
+#amenitiesButtonAlternate {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+}
+.newListingDropZone {
+  width: 400px;
+  height: 100px;
+  border: 2px #add8e6;
+  border-style: dashed;
+  background-color: #fafafa;
+}
+.newListingImagesGridLeft {
+  display: grid;
+  width: 60%;
+  height: 70%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2fr 1fr 1fr;
+  grid-template-areas:
+    "first first"
+    "second third"
+    "fourth fifth";
+  gap: 8px;
+  padding: 10% 4% 10% 4%;
+
+  /* overflow-y: scroll; */
+}
+.newListingUploadedImages {
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+}
+
+.newListingUploadedImages0Left {
+  border-radius: 5px;
+  grid-area: first;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.newListingUploadedImages1Left {
+  border-radius: 5px;
+  grid-area: second;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.newListingUploadedImages2Left {
+  border-radius: 5px;
+  grid-area: third;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.newListingUploadedImages3Left {
+  border-radius: 5px;
+  grid-area: fourth;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.newListingUploadedImages4Left {
+  border-radius: 5px;
+  grid-area: fifth;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+@media screen and (max-width: 768px) {
+  #amenitiesButton {
+    width: 85px;
+    height: 85px;
+    margin: 4px;
+    border-radius: 5px;
+  }
+  #amenitiesButtonAlternate {
+    width: 85px;
+    height: 85px;
+    margin: 4px;
+    /* border-radius: 5px; */
+  }
+  .newListingLeft {
+    display: none;
+  }
+  .newListingContainer {
+    margin-top: 15%;
+    /* justify-content: unset; */
+  }
+  .newListingRight {
+    width: auto;
+  }
+  .newListingInputWrapper {
+    /* display: flex; */
+
+    justify-content: unset;
+    margin: auto;
+    /* flex-direction: column; */
+    align-content: unset;
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+  .newListingInputWrapperGroup {
+    padding-right: 0% !important;
+    padding-left: 0% !important;
+  }
+  .newListingAmenitiesWrapper {
+    width: auto;
+  }
+  .newListingDropZone {
+    width: auto;
+  }
+  .MuiOutlinedInput-root {
+    margin-top: 2%;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .newListingBg {
+    height: auto;
+  }
+}

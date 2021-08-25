@@ -1,0 +1,24 @@
+.myListingsContainer {
+  display: flex;
+  max-width: 100%;
+  height: auto;
+  padding: 50px 25px 50px 25px;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-top: 2px solid lightgrey;
+}
+
+.myListingsCardsContainer {
+  display: flex;
+  max-width: 100%;
+  height: auto;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.myListingsTopGraphic{
+    
+    height: 200px;
+    width: 100%;
+    background-image: url("../newListing/assets/images/houses.jpg") cover;
+    background-size: contain;
+}
