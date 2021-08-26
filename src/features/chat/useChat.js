@@ -1,3 +1,4 @@
+import { PersonalVideo } from '@material-ui/icons';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -5,7 +6,7 @@ import api from './api';
 import socket from './socket';
 
 export default function useChat() {
-	const { conversationId = '61266039a14a3a305081fa10' } = useParams();
+	const { conversationId = '61273062565e95163aff03ec' } = useParams();
 	const [chat, setChat] = useState({
 		_id: '',
 		participants: [],
@@ -16,6 +17,8 @@ export default function useChat() {
 	});
 	const [error, setError] = useState();
 
+	const currentUser = JSON.parse(localStorage.getItem('user'));
+
 	const onMessageRecieve = ({ author, body, _id, createdAt }) => {
 		setChat((prevChat) => ({
 			...prevChat,
@@ -23,7 +26,21 @@ export default function useChat() {
 		}));
 	};
 
-	const sendMessage = () => {};
+	const sendMessage = (message) => {
+		const msg = {
+			body: message,
+			from: currentUser.email,
+			to: 'h@h.com'
+		};
+		socket.emit('message', msg, (ackMessage) => {
+			setChat((prev) => {
+				return {
+					...prev,
+					messages: [...prev.messages, ackMessage]
+				};
+			});
+		});
+	};
 
 	useEffect(() => {
 		getConversationMessages();
@@ -39,6 +56,7 @@ export default function useChat() {
 	const getConversationMessages = async () => {
 		try {
 			const { conversation } = await api.getMessages(conversationId);
+			console.log(conversation);
 			setChat(conversation);
 		} catch (error) {
 			setError(error);

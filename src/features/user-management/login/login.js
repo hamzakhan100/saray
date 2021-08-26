@@ -21,7 +21,7 @@ const Login = () => {
 		try {
 			const r = await api.authenticate(user);
 			localStorage.setItem('token', r.data.token);
-			localStorage.setItem('user', r.data.user);
+			localStorage.setItem('user', JSON.stringify(r.data.user));
 			history.push('/');
 		} catch (error) {
 			console.log(error);
