@@ -19,7 +19,10 @@ import { useHistory } from "react-router-dom";
 import storage from "../../../firebase";
 import Dropzone from "react-dropzone";
 import { set } from "date-fns";
-
+import amenitiesPic from "./assets/images/amenities.jpg";
+import guestsPic from "./assets/images/invite.jpg";
+import ratePic from "./assets/images/rate.jpg";
+import uploadPic from "./assets/images/uploadImage.jpg";
 const NewListing = () => {
   /////DropZone Styles
   /////Styles
@@ -49,6 +52,7 @@ const NewListing = () => {
     guestsLimit: 0,
     amenities: [],
   });
+  const [urlsImages, setUrlsImages] = useState([]);
   const [images, setImages] = useState([]);
   const [imageUpload, setUpload] = useState(false);
   const [amenity, setAmenity] = useState({
@@ -107,7 +111,7 @@ const NewListing = () => {
     );
     setUpload(false);
 
-    console.log(imageUrls);
+    setUrlsImages(imageUrls);
     return;
   };
   const onAddressChange = (e) => {
@@ -125,7 +129,12 @@ const NewListing = () => {
   const onAddClick = async () => {
     onImageUpload();
     try {
-      await api.addListing({ ...listing, address });
+      await api.addListing({
+        ...listing,
+        address,
+        amenities: [amenity],
+        imagesUrls: [urlsImages],
+      });
       history.push("/myListings");
     } catch (error) {
       console.log(error);
@@ -171,35 +180,76 @@ const NewListing = () => {
             ></iframe>
           </div>
         );
+      case 2:
+        return (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <img style={{ height: "70%" }} src={amenitiesPic} />
+          </div>
+        );
+
+      case 3:
+        return (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <img style={{ height: "70%" }} src={guestsPic} />
+          </div>
+        );
+      case 4:
+        return (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <img style={{ height: "70%" }} src={ratePic} />
+          </div>
+        );
       case 5:
         return (
           <div className="newListingImagesGridLeft">
-            {images.length
-              ? preview.length
-                ? preview.map((x, index) => {
-                    return (
-                      <div className={`newListingUploadedImages${index}Left`}>
-                        {imageUpload ? (
-                          <CircularProgress
-                            style={{ position: "relative", margin: "auto" }}
-                          />
-                        ) : (
-                          <img
-                            style={{
-                              width: "100%",
-                              height: "100%",
-                              objectFit: "cover",
-                              borderRadius: "5px",
-                            }}
-                            src={x}
-                            className={"newListingImageLeft"}
-                          />
-                        )}
-                      </div>
-                    );
-                  })
-                : null
-              : "yo"}
+            {images.length ? (
+              preview.length ? (
+                preview.map((x, index) => {
+                  return (
+                    <div className={`newListingUploadedImages${index}Left`}>
+                      {imageUpload ? (
+                        <CircularProgress
+                          style={{ position: "relative", margin: "auto" }}
+                        />
+                      ) : (
+                        <img
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                            borderRadius: "5px",
+                          }}
+                          src={x}
+                          className={"newListingImageLeft"}
+                        />
+                      )}
+                    </div>
+                  );
+                })
+              ) : null
+            ) : (
+              <div>
+                <img style={{  }} src={uploadPic} />
+              </div>
+            )}
           </div>
         );
 
@@ -302,14 +352,20 @@ const NewListing = () => {
             </button>
             <button
               name="patio"
-              id={amenity.patio ? "amenitiesButtonAlternate" : "amenitiesButton"}
+              id={
+                amenity.patio ? "amenitiesButtonAlternate" : "amenitiesButton"
+              }
               onClick={onAmenityChange}
             >
               Patio
             </button>
             <button
               name="barbeque"
-              id={amenity.barbeque ? "amenitiesButtonAlternate" : "amenitiesButton"}
+              id={
+                amenity.barbeque
+                  ? "amenitiesButtonAlternate"
+                  : "amenitiesButton"
+              }
               onClick={onAmenityChange}
               styles={{ width: "10%", height: "10%" }}
             >
@@ -317,7 +373,9 @@ const NewListing = () => {
             </button>
             <button
               name="garden"
-              id={amenity.garden ? "amenitiesButtonAlternate" : "amenitiesButton"}
+              id={
+                amenity.garden ? "amenitiesButtonAlternate" : "amenitiesButton"
+              }
               onClick={onAmenityChange}
               styles={{ width: "10%", height: "10%" }}
             >
@@ -325,7 +383,9 @@ const NewListing = () => {
             </button>
             <button
               name="parking"
-              id={amenity.parking ? "amenitiesButtonAlternate" : "amenitiesButton"}
+              id={
+                amenity.parking ? "amenitiesButtonAlternate" : "amenitiesButton"
+              }
               onClick={onAmenityChange}
               styles={{ width: "10%", height: "10%" }}
             >
@@ -333,7 +393,11 @@ const NewListing = () => {
             </button>
             <button
               name="securityCam"
-              id={amenity.securityCam ? "amenitiesButtonAlternate" : "amenitiesButton"}
+              id={
+                amenity.securityCam
+                  ? "amenitiesButtonAlternate"
+                  : "amenitiesButton"
+              }
               onClick={onAmenityChange}
               styles={{ width: "10%", height: "10%" }}
             >
