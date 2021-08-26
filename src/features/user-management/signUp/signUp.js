@@ -1,11 +1,18 @@
 import { Button, TextField } from "@material-ui/core";
-import { useState } from "react";
+import { useState ,useCallback } from "react";
 import api from "../api";
 import "./signUp.css";
-import signUpBg from "./assets/images/34929.jpg"
+import signUpBg from "./assets/images/34929.jpg";
+import {useDropzone} from 'react-dropzone'
 
 const SignUp = () => {
   const [user, setUser] = useState({ name: "", email: "", password: "" });
+  // for file upload
+  const onDrop = useCallback(acceptedFiles => {
+    // Do something with the files
+  }, [])
+  const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
+  // end here 
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -25,18 +32,18 @@ const SignUp = () => {
   };
   return (
     <div className="signUpContainer">
-      <h1 className="logo">Logo</h1>
+      {/* <h1 className="logo">Logo</h1> */}
       <div className="imageSection">
-        
         <img src={signUpBg} className="signUpBgImage"></img>
       </div>
       <div className="signUpSection">
         <div className="signUpWrapper">
-          <h1 style={{ position: "absolute", top: "10%" }}>Get Started</h1>
-          <p style={{ position: "absolute", top: "16%", color: "lightgray" }}>
+          <h1 className="web">Get Started</h1>
+          <h1 className="mob">SingUp</h1>
+          <p className="web" style={{ color: "lightgray" }}>
             Let's get going
           </p>
-          <h3>signUp</h3>
+          <h3 className="web">signUp</h3>
           <div className="signUpInputsWrapper">
             <TextField
               name="name"
@@ -71,6 +78,11 @@ const SignUp = () => {
               type="password"
             />
           </div>
+          <div {...getRootProps()}>
+      <input {...getInputProps()} />
+           <p className="signupDropZone">Drop the files here ...</p> 
+    </div>
+          
           <div className="signUpButtonWrapper">
             <Button onClick={onClick} id="signUpButton" variant="contained">
               signUp

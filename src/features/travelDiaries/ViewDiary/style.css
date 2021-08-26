@@ -3,6 +3,7 @@
 }
 .main {
   padding: 5%;
+  margin-top: 3%;
 }
 .left-section {
   width: 70%;
@@ -67,6 +68,12 @@
   height: 350px;
 }
 @media screen and (max-width: 768px) {
+  .blog-contant > p {
+    width: auto;
+  }
+  .blog-contant {
+    padding: 1%;
+  }
   .left-section {
     width: auto;
   }

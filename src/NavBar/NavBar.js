@@ -80,22 +80,22 @@ import {
 	  label: "viewDiary",
 	  href: "/viewDiary",
 	},
-	// {
-	//   label: "createDiary",
-	//   href: "/createDiary",
-	// },
-	// {
-	//   label: "profile",
-	//   href: "/profile",
-	// },
-	// {
-	//   label: "register",
-	//   href: "/register",
-	// },
-	// {
-	//   label: "login",
-	//   href: "/login",
-	// },
+	{
+	  label: "createDiary",
+	  href: "/createDiary",
+	},
+	{
+	  label: "profile",
+	  href: "/profile",
+	},
+	{
+	  label: "register",
+	  href: "/register",
+	},
+	{
+	  label: "login",
+	  href: "/login",
+	},
   ];
   
   const useStyles = makeStyles(() => ({
