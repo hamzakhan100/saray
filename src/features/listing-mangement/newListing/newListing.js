@@ -247,7 +247,7 @@ const NewListing = () => {
               ) : null
             ) : (
               <div>
-                <img style={{  }} src={uploadPic} />
+                <img style={{ }} src={uploadPic} />
               </div>
             )}
           </div>
