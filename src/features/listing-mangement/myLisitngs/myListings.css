@@ -16,9 +16,12 @@
   flex-wrap: wrap;
 }
 .myListingsTopGraphic{
-    
+    position: absolute;
     height: 200px;
     width: 100%;
-    background-image: url("../newListing/assets/images/houses.jpg") cover;
-    background-size: contain;
+    margin-top: 6%;
+    background-color: #f05053;
+    background-image:linear-gradient( to right, #22c1c3 ,#fdbb2d);
+    object-fit: contain;
+    border-radius: 5px;
 }

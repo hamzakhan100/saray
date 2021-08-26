@@ -37,58 +37,16 @@ const MyListings = (props) => {
   }, []);
 
   const classes = useStyles();
-  let arr = [
-    {
-      title: "James Carly an amazing view and dinner",
-      desc: "It is amazing proerty with city views and beautiful vibes in the night where you feel close to nature",
-      img: "../listings/assets/images/houses.jpg",
-    },
-    {
-      title: "James Carly an amazing view and dinner",
-      desc: "It is amazing proerty with city views and beautiful vibes in the night where you feel close to nature",
-      img: "../listings/assets/images/house.jpg",
-    },
-    {
-      title: "James Carly an amazing view and dinner",
-      desc: "It is amazing proerty with city views and beautiful vibes in the night where you feel close to nature",
-      img: "../listings/assets/images/house.jpg",
-    },
-    {
-      title: "James Carly an amazing view and dinner",
-      desc: "It is amazing proerty with city views and beautiful vibes in the night where you feel close to nature",
-      img: "../listings/assets/images/house.jpg",
-    },
-    {
-      title: "James Carly an amazing view and dinner",
-      desc: "It is amazing proerty with city views and beautiful vibes in the night where you feel close to nature",
-      img: "../listings/assets/images/house.jpg",
-    },
-    {
-      title: "James Carly an amazing view and dinner",
-      desc: "It is amazing proerty with city views and beautiful vibes in the night where you feel close to nature",
-      img: "../listings/assets/images/house.jpg",
-    },
-    {
-      title: "James Carly an amazing view and dinner",
-      desc: "It is amazing proerty with city views and beautiful vibes in the night where you feel close to nature",
-      img: "../listings/assets/images/house.jpg",
-    },
-    {
-      title: "James Carly an amazing view and dinner",
-      desc: "It is amazing proerty with city views and beautiful vibes in the night where you feel close to nature",
-      img: "../listings/assets/images/house.jpg",
-    },
-    {
-      title: "James Carly an amazing view and dinner",
-      desc: "It is amazing proerty with city views and beautiful vibes in the night where you feel close to nature",
-      img: "../listings/assets/images/house.jpg",
-    },
-  ];
-
+  
   return (
     <div className="myListingsContainer">
-      <div className="myListingsTopGraphic"></div>
-      <h3 style={{}}>Usernames's listings</h3>
+      <h3 style={{paddingTop:"2%"}}>Usernames's listings</h3>
+      <div style={{}}className="myListingsTopGraphic">
+
+        
+
+      </div>
+      
       <div className="myListingsCardsContainer">
         {listings.map((element, k) => {
           console.log(element.title);
