@@ -1,0 +1,22 @@
+.chat-container {
+	display: flex;
+	flex: 1;
+	flex-direction: column-reverse;
+	margin-top: 70px;
+}
+
+.message-container {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+}
+
+.recieved {
+	align-items: flex-end;
+	text-align: left;
+}
+
+.sent {
+	align-items: flex-start;
+	text-align: right;
+}

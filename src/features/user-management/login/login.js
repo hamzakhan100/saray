@@ -1,32 +1,32 @@
-import "./login.css";
-import api from "../api";
-import { Button, TextField } from "@material-ui/core";
-import { useState } from "react";
-import { useHistory } from "react-router-dom";
-import loginBg from "./assets/images/9800.png";
+import './login.css';
+import api from '../api';
+import { Button, TextField } from '@material-ui/core';
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import loginBg from './assets/images/9800.png';
 
 const Login = () => {
-  const [user, setUser] = useState({ email: "", password: "" });
-  const history = useHistory();
+	const [user, setUser] = useState({ email: '', password: '' });
+	const history = useHistory();
 
-  const onChange = (e) => {
-    const { name, value } = e.target;
-    setUser((user) => ({
-      ...user,
-      [name]: value,
-    }));
-  };
+	const onChange = (e) => {
+		const { name, value } = e.target;
+		setUser((user) => ({
+			...user,
+			[name]: value
+		}));
+	};
 
-  const onClick = async () => {
-    try {
-      const r = await api.authenticate(user);
-      localStorage.setItem("token", r.data.token);
-      history.push("/");
-      console.log(r.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+	const onClick = async () => {
+		try {
+			const r = await api.authenticate(user);
+			localStorage.setItem('token', r.data.token);
+			localStorage.setItem('user', JSON.stringify(r.data.user));
+			history.push('/');
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
   return (
     <div className="loginContainer">
