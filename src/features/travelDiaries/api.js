@@ -23,5 +23,16 @@ async function getBlogs() {
 	}
 }
 
+async function getBlog(blogId) {
+	try {
+		const token = localStorage.getItem('token');
+		return await axios.get(config.baseUrl + '/blog/' + blogId, {
+			headers: { Authorization: 'Bearer ' + token }
+		});
+	} catch (error) {
+		throw error;
+	}
+}
+
 // eslint-disable-next-line import/no-anonymous-default-export
-export default { postBlog, getBlogs };
+export default { postBlog, getBlogs, getBlog };
