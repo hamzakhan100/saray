@@ -29,9 +29,17 @@ function App() {
 					<Route path="/profile" component={Profile} />
 					<Route path="/newListing" component={NewListing} />
 					<Route path="/myListings" component={MyListings} />
-					<Route exact path="/listing/:listingId" component={Listing} />
+					<Route
+						exact
+						path="/listing/:listingId"
+						component={Listing}
+					/>
 					<Route path="/SearchDiaries" component={SearchDiaries} />
-					<Route path="/viewDiary" component={ViewDiary} />
+					<Route
+						exact
+						path="/viewDiary/:blogId"
+						component={ViewDiary}
+					/>
 					<Route path="/createDiary" component={CreateDiary} />
 					{/* <Route exact path="/chat" component={AllChats} /> */}
 					<Route exact path="/chat" component={Chat} />

@@ -10,6 +10,7 @@ import './style.css';
 import post from '../../../post.json';
 import Eachpost from './search/eachpost';
 import api from '../api';
+import { useHistory } from 'react-router-dom';
 const useStyles = makeStyles((theme) => ({
 	button: {
 		display: 'block',
@@ -23,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 const SearchDiaries = () => {
 	const classes = useStyles();
+	const history = useHistory();
 	const [city, setCity] = React.useState('');
 	const [open, setOpen] = React.useState(false);
 	const [posts, setPosts] = React.useState([]);
@@ -42,6 +44,10 @@ const SearchDiaries = () => {
 	let handleChange;
 	let handleClose;
 	let dropdataSearch;
+
+	const handleOnClick = (blogId) => {
+		history.push('/viewDiary/' + blogId);
+	};
 
 	if (post == null) {
 		return (
@@ -109,7 +115,9 @@ const SearchDiaries = () => {
 					</div>
 					<div className="eachpostmain">
 						{dropdataSearch.map((post) => {
-							return <Eachpost post={post} />;
+							return (
+								<Eachpost onClick={handleOnClick} post={post} />
+							);
 						})}
 					</div>
 				</>
