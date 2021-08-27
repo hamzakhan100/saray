@@ -13,6 +13,8 @@ import {
 } from "@material-ui/core";
 import api from "./api";
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const MyListings = (props) => {
   const useStyles = makeStyles({
@@ -24,11 +26,13 @@ const MyListings = (props) => {
   });
 
   const [listings, setListings] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
     (async () => {
       try {
         const result = await api.fetchListings();
+        console.log(result.data.listings,"myListing");
         setListings(result.data.listings);
       } catch (error) {
         alert(error);
@@ -36,28 +40,33 @@ const MyListings = (props) => {
     })();
   }, []);
 
+  const handleClick = (id) => {
+    history.push("/listing/" + id);
+  };
   const classes = useStyles();
-  
+
   return (
     <div className="myListingsContainer">
-      <h3 style={{paddingTop:"2%"}}>Usernames's listings</h3>
-      <div style={{}}className="myListingsTopGraphic">
+      <h3 style={{ paddingTop: "2%" }}>Usernames's listings</h3>
+      <div style={{}} className="myListingsTopGraphic"></div>
 
-        
-
-      </div>
-      
       <div className="myListingsCardsContainer">
         {listings.map((element, k) => {
           console.log(element.title);
           return (
-            <Card className={classes.root} key={k}>
+            <Card
+              className={classes.root}
+              key={k}
+              onClick={() => handleClick(element._id)}
+            >
               <CardActionArea>
+                {console.log(element, "element")}
                 <CardMedia
                   component="img"
                   alt="Contemplative Reptile"
                   height="140"
-                  image={pic}
+                  style={{ objectFit: "center" }}
+                  image={element.images.length ? element.images[0] : pic}
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -73,14 +82,7 @@ const MyListings = (props) => {
                   </Typography>
                 </CardContent>
               </CardActionArea>
-              <CardActions>
-                <Button size="small" color="primary">
-                  Share
-                </Button>
-                <Button size="small" color="primary">
-                  Learn More
-                </Button>
-              </CardActions>
+              <CardActions></CardActions>
             </Card>
           );
         })}

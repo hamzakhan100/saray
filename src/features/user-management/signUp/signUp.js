@@ -1,18 +1,27 @@
 import { Button, TextField } from "@material-ui/core";
-import { useState ,useCallback } from "react";
+import { useState, useCallback } from "react";
 import api from "../api";
 import "./signUp.css";
-import signUpBg from "./assets/images/34929.jpg";
-import {useDropzone} from 'react-dropzone'
+import signUpBg from "./assets/images/uploadImage.jpg";
+// import { useDropzone } from "react-dropzone";
+import storage from "../../../firebase";
+import { useHistory } from "react-router-dom"; 
 
 const SignUp = () => {
-  const [user, setUser] = useState({ name: "", email: "", password: "" });
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+    imageUrl: "",
+  });
+  const history = useHistory();
+  // const 
   // for file upload
-  const onDrop = useCallback(acceptedFiles => {
-    // Do something with the files
-  }, [])
-  const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
-  // end here 
+  // const onDrop = useCallback((acceptedFiles) => {
+  //   // Do something with the files
+  // }, []);
+  // const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  // end here
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -22,10 +31,29 @@ const SignUp = () => {
     }));
   };
 
+  const onFileUpload = e =>{
+    
+  }
+
+  const onUpload = async () => {
+    try {
+      const name = "" + Date.now();
+      const uploadTask = storage.ref("/profile/" + name).put();
+
+      uploadTask.on("state_changed", (snapshot) => {});
+
+      await uploadTask;
+      const url = await storage.ref("/profile").child(name).getDownloadURL();
+
+      setUser((user) => ({ ...user, imageUrl: url }));
+    } catch (error) {}
+  };
+
   const onClick = async () => {
     try {
       const r = await api.register(user);
       console.log(r.status);
+      history.push("/login"); 
     } catch (error) {
       console.log(error);
     }
@@ -78,11 +106,11 @@ const SignUp = () => {
               type="password"
             />
           </div>
-          <div {...getRootProps()}>
-      <input {...getInputProps()} />
-           <p className="signupDropZone">Drop the files here ...</p> 
-    </div>
-          
+          <div>
+          <label sytle={{paddingBottom:"20px"}} for="avatar">Choose a profile picture:</label>
+            <input type="file" onChange={onFileUpload} className="signUpInput"></input>
+          </div>
+
           <div className="signUpButtonWrapper">
             <Button onClick={onClick} id="signUpButton" variant="contained">
               signUp
