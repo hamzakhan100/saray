@@ -1,160 +1,195 @@
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
-import { Editor, EditorState } from "draft-js";
-import Select from "@material-ui/core/Select";
-import Button from "@material-ui/core/Button";
-import "draft-js/dist/Draft.css";
-import "./style.css";
+import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-      //   width: "50ch",
-    },
-  },
-  button: {
-    display: "block",
-    marginTop: theme.spacing(2),
-  },
-  formControl: {
-    // width: "50ch",
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-}));
+import ReactQuill from 'react-quill';
+import Select from '@material-ui/core/Select';
+import Button from '@material-ui/core/Button';
+
+import storage from '../../../firebase';
+
+import { useHistory } from 'react-router-dom';
+
+import 'react-quill/dist/quill.snow.css';
+import './style.css';
+import api from '../api';
 
 const CreateDiary = () => {
-  const [open, setOpen] = React.useState(false);
-  const classes = useStyles();
-  const [state, setState] = useState({
-    title: "",
-    city: "",
-    Description: "",
-    picture: "",
-  });
+	const [open, setOpen] = React.useState(false);
+	const classes = useStyles();
+	const history = useHistory();
+	const [state, setState] = useState({
+		title: '',
+		city: '',
+		description: '',
+		imageUrl: ''
+	});
 
-  const [editorState, setEditorState] = React.useState(
-    EditorState.createEmpty()
-  );
+	const [content, setContent] = useState('');
+	const [loading, setLoading] = useState(false);
 
-  const editor = React.useRef(null);
+	const handleClose = () => {
+		setOpen(false);
+	};
 
-  function focusEditor() {
-    editor.current.focus();
-  }
+	const handleOpen = () => {
+		setOpen(true);
+	};
 
-  React.useEffect(() => {
-    focusEditor();
-  }, []);
+	const SubmitForm = async (e) => {
+		e.preventDefault();
+		try {
+			await api.postBlog({ ...state, content });
+			history.push('/SearchDiaries');
+		} catch (error) {
+			alert('Error');
+		}
+	};
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+	const onContentChange = (value) => {
+		setContent(value);
+	};
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
+	const onFileChange = async (e) => {
+		setLoading(true);
+		const file = e.target.files[0];
+		const name = file.name + Date.now();
+		const uploadTask = storage.ref('/blogs/' + name).put(file);
+		uploadTask.on('state_changed', (snapshot) => {
+			if (
+				Math.round(
+					(snapshot.bytesTransferred / snapshot.totalBytes) * 100
+				) === 100
+			)
+				alert('Image Uploaded');
+		});
+		try {
+			await uploadTask;
+			const url = await storage
+				.ref('/blogs')
+				.child(name)
+				.getDownloadURL();
+			setState((st) => ({ ...st, imageUrl: url }));
+			setLoading(false);
+		} catch (error) {
+			alert('Error');
+		}
+	};
 
-  const SubmitForm = (e) => {
-    e.preventDefault();
-    alert("You have submitted the form.");
-    console.log("aaa");
-  };
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+		setState({
+			...state,
+			[name]: value
+		});
+	};
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setState({
-      ...state,
-      [name]: value,
-      // [e.target.city]: value
-    });
-  };
+	return (
+		<div className="form-main">
+			<div className="aaa">
+				<div className="form-heading">
+					<h1>Create Diary</h1>
+				</div>
+				<div className="form-layout">
+					<form
+						className={classes.root}
+						noValidate
+						autoComplete="off"
+						onSubmit={SubmitForm}
+					>
+						<TextField
+							id="standard-basic"
+							label="Title"
+							value={state.title}
+							name="title"
+							onChange={handleChange}
+						/>
 
-  {
-    console.log("stateeee", state);
-  }
-  return (
-    <div className="form-main">
-      <div className="aaa">
-        <div className="form-heading">
-          <h1>Create Diary</h1>
-        </div>
-        <div className="form-layout">
-          <form
-            className={classes.root}
-            noValidate
-            autoComplete="off"
-            onSubmit={SubmitForm}
-          >
-            <TextField
-              id="standard-basic"
-              label="Title"
-              value={state.title}
-              name="title"
-              onChange={handleChange}
-            />
+						<FormControl className={classes.formControl}>
+							<InputLabel id="demo-controlled-open-select-label">
+								Select City
+							</InputLabel>
+							<Select
+								labelId="demo-controlled-open-select-label"
+								id="demo-controlled-open-select"
+								open={open}
+								onClose={handleClose}
+								onOpen={handleOpen}
+								value={state.city}
+								name="city"
+								onChange={handleChange}
+							>
+								<MenuItem value="">
+									<em>None</em>
+								</MenuItem>
+								<MenuItem value={'Islamabad'}>
+									Islamabad
+								</MenuItem>
+								<MenuItem value={'Lahore'}>Lahore</MenuItem>
+								<MenuItem value={'Rawalpindi'}>
+									Rawalpindi
+								</MenuItem>
+								<MenuItem value={'peshawar'}>Peshawar</MenuItem>
+							</Select>
+						</FormControl>
 
-            <FormControl className={classes.formControl}>
-              <InputLabel id="demo-controlled-open-select-label">
-                Select City
-              </InputLabel>
-              <Select
-                labelId="demo-controlled-open-select-label"
-                id="demo-controlled-open-select"
-                open={open}
-                onClose={handleClose}
-                onOpen={handleOpen}
-                value={state.city}
-                name="city"
-                onChange={handleChange}
-              >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={"Islamabad"}>Islamabad</MenuItem>
-                <MenuItem value={"Lahore"}>Lahore</MenuItem>
-                <MenuItem value={"rawalpindi"}>rawalpindi</MenuItem>
-                <MenuItem value={"peshawar"}>peshawar</MenuItem>
-              </Select>
-            </FormControl>
+						<div className="editor-layout">
+							<ReactQuill
+								onChange={onContentChange}
+								value={content}
+							/>
+						</div>
 
-            <div onClick={focusEditor} className="editor-layout">
-              <Editor
-                ref={editor}
-                editorState={editorState}
-                onChange={(editorState) => setEditorState(editorState)}
-              />
-            </div>
-            <TextField
-              id="standard-basic"
-              type="text"
-              label=" Short Description"
-              value={state.Description}
-              name="Description"
-              onChange={handleChange}
-            />
+						<TextField
+							id="standard-basic"
+							type="text"
+							label=" Short Description"
+							value={state.Description}
+							name="description"
+							onChange={handleChange}
+						/>
 
-            <TextField
-              id="standard-basic"
-              type="file"
-              value={state.picture}
-              name="picture"
-              onChange={handleChange}
-              className="picture"
-            />
-            <hr />
-            <Button variant="contained" color="primary" type="submit">
-              Submit
-            </Button>
-          </form>
-        </div>
-      </div>
-    </div>
-  );
+						<TextField
+							id="standard-basic"
+							type="file"
+							value={state.picture}
+							name="picture"
+							onChange={onFileChange}
+							className="picture"
+						/>
+						<hr />
+						<Button
+							variant="contained"
+							color="primary"
+							type="submit"
+							disabled={loading}
+						>
+							Submit
+						</Button>
+					</form>
+				</div>
+			</div>
+		</div>
+	);
 };
 export default CreateDiary;
+const useStyles = makeStyles((theme) => ({
+	root: {
+		'& > *': {
+			margin: theme.spacing(1)
+			//   width: "50ch",
+		}
+	},
+	button: {
+		display: 'block',
+		marginTop: theme.spacing(2)
+	},
+	formControl: {
+		// width: "50ch",
+		margin: theme.spacing(1),
+		minWidth: 120
+	}
+}));
