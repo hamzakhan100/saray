@@ -18,7 +18,7 @@ const openPage=(id)=>{
               <div className="card-main">
                 <div className="card">
                   <div className="cardImg">
-                    <img src={post.image} />
+                    <img src={post.imageUrl} alt="Blog" />
                   </div>
                   <div className="card-bottom">
                   <div className="cardname">
