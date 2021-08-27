@@ -15,7 +15,9 @@
   align-content: center;
   justify-content: center;
 }
-
+.signUpInput{
+  
+}
 .signUpWrapper {
   display: flex;
   flex-direction: column;

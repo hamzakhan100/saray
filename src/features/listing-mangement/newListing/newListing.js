@@ -127,13 +127,12 @@ const NewListing = () => {
   };
 
   const onAddClick = async () => {
-    onImageUpload();
     try {
       await api.addListing({
         ...listing,
         address,
-        amenities: [amenity],
-        imagesUrls: [urlsImages],
+        amenities: amenity,
+        imagesUrl: urlsImages,
       });
       history.push("/myListings");
     } catch (error) {
@@ -528,8 +527,8 @@ const NewListing = () => {
                 </section>
               )}
             </Dropzone>
-            {/* <input type="file" onChange={(e)=>{setImages(e.target.files[0])}}></input>
-            <Button onClick={onImageUpload}>Upload</Button> */}
+            {/* <input type="file" onChange={(e)=>{setImages(e.target.files[0])}}></input> */}
+            <Button onClick={onImageUpload}>Upload</Button>
           </div>
         );
       default:
@@ -586,7 +585,7 @@ const NewListing = () => {
                         }
                         className={classes.button}
                       >
-                        {activeStep === steps.length - 1 ? "Upload" : "Next"}
+                        {activeStep === steps.length - 1 ? "Submit" : "Next"}
                       </Button>
                     </div>
                   </div>
