@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120,
+    minWidth: 500,
   },
 }));
 
@@ -62,7 +62,7 @@ const SearchDiaries = () => {
     <div>
       {post != null ? (
         <div>
-          <div className="searchdiary-main">
+          <div style={{display:"flex",justifyContent:"center"}}className="searchdiary-main">
             <Button className="button" onClick={handleOpen}></Button>
             <FormControl className={classes.formControl}>
               <InputLabel id="demo-controlled-open-select-label">

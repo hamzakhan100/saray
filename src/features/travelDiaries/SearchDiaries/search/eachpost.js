@@ -1,13 +1,15 @@
 import React from "react";
 import { Container, Col, Row } from "reactstrap";
+import { useHistory } from "react-router-dom";
 
 // import "./style.css"
 const SearchDiaries = (props) => {
   const { post } = props;
 
-const openPage=(id)=>{
-  console.log("page is working")
-}
+  const history = useHistory();
+  const openPage = (id) => {
+    history.pushState("/viewDiary");
+  };
 
   return (
     <>
@@ -21,19 +23,29 @@ const openPage=(id)=>{
                     <img src={post.image} />
                   </div>
                   <div className="card-bottom">
-                  <div className="cardname">
-                    <h4>{post.title}</h4>
-                  </div>
+                    <div className="cardname">
+                      <h4>{post.title}</h4>
+                    </div>
 
-                  <div className="card-desc">
-                    <p style={{fontSize:"14px"}}>{post.description}</p>
+                    <div className="card-desc">
+                      <p style={{ fontSize: "14px" }}>{post.description}</p>
+                    </div>
+                    <hr style={{ borderBottom: "0" }} />
+
+                    <div
+                      style={{ display: "flex", justifyContent: "flex-end" }}
+                      className="card-location"
+                    >
+                      <p
+                        style={{
+                          fontSize: "12px",
+                          textTransform: "capitalize",
+                        }}
+                      >
+                        {post.city}
+                      </p>
+                    </div>
                   </div>
-                  <hr style={{borderBottom:"0",}}/>
-                  
-                  <div style={{display:"flex",justifyContent:"flex-end"}} className="card-location">
-                  <p style={{fontSize:"12px",textTransform:"capitalize"}}>{post.city}</p>
-                </div>
-                </div>
                 </div>
               </div>
             </Col>
@@ -44,4 +56,3 @@ const openPage=(id)=>{
   );
 };
 export default SearchDiaries;
-

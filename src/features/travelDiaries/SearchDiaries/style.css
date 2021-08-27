@@ -58,6 +58,12 @@
 .searchdiary-main {
   margin-top: 6%;
 }
+.homeUI-main{
+
+}
+.homeUI-main :hover{
+  cursor: pointer;
+}
 @media screen and (max-width: 768px) {
   .card-main {
     padding: 11px;
