@@ -26,12 +26,12 @@ const openPage=(id)=>{
                   </div>
 
                   <div className="card-desc">
-                    <p>{post.description}</p>
+                    <p style={{fontSize:"14px"}}>{post.description}</p>
                   </div>
-                  <hr />
+                  <hr style={{borderBottom:"0",}}/>
                   
-                  <div className="card-location">
-                  <p>{post.city}</p>
+                  <div style={{display:"flex",justifyContent:"flex-end"}} className="card-location">
+                  <p style={{fontSize:"12px",textTransform:"capitalize"}}>{post.city}</p>
                 </div>
                 </div>
                 </div>

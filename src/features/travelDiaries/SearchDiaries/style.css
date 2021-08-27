@@ -6,6 +6,7 @@
 }
 .card-main {
   padding: 5px;
+  font-family: 'Noto Sans JP', sans-serif;
 }
 
 .card {
@@ -13,16 +14,21 @@
   /* height: 320px; */
   /* border: 0.1rem solid rgba(0, 47, 52, 0.2); */
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
 }
 .card-bottom {
   padding: 11px;
 }
 .cardImg {
   text-align: center;
+  border-radius: 5px;
 }
 .cardImg > img {
   width: 280px;
   max-height: 158px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+
 }
 .cardprice {
   min-height: 10%;
@@ -30,13 +36,16 @@
 
 .card-desc {
   min-height: 15%;
+  font-family: 'Noto Sans JP', sans-serif;
 }
 
 .card-desc > p {
   overflow-wrap: anywhere;
+  font-family: 'Noto Sans JP', sans-serif;
 }
 .cardname {
   min-height: 12%;
+  font-family: 'Noto Sans JP', sans-serif;
 }
 .spin {
   margin: 18% 0;

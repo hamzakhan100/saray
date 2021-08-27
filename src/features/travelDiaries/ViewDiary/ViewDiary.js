@@ -79,30 +79,18 @@ const ViewDiary = () => {
             </p>
           </div>
           <hr className="line" />
-          <div className="d-flex">
+          <div style={{justifyContent:"flex-end"}} className="d-flex">
             <div className="blog-location">
-              <p>{data[0].city}</p>{" "}
+              <p style={{fontSize:"12px",textTransform:"capitalize"}}><bold>{data[0].city}</bold></p>{" "}
             </div>
             <div className="blog-date">
-              <p>10/09/20</p>
+              <p style={{fontSize:"12px"}} >-10/09/20</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="right-section ">
-        <div className="right-section-layout-top">
-          <div className="right-section-layout-img-top">
-            <img src={data[0].image} />
-          </div>
-        </div>
-        <div className="right-section-layout-bottom">
-          
-          <div className="right-section-layout-img-bottom">
-            <img src={data[0].image} />
-          </div>
-        </div>
-      </div>
+      
     </div>
   );
 };

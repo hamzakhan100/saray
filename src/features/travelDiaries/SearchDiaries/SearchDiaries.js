@@ -61,7 +61,7 @@ const SearchDiaries = () => {
   return (
     <div>
       {post != null ? (
-        <>
+        <div>
           <div className="searchdiary-main">
             <Button className="button" onClick={handleOpen}></Button>
             <FormControl className={classes.formControl}>
@@ -82,8 +82,8 @@ const SearchDiaries = () => {
                 </MenuItem>
                 <MenuItem value={"Islamabad"}>Islamabad</MenuItem>
                 <MenuItem value={"Lahore"}>Lahore</MenuItem>
-                <MenuItem value={"rawalpindi"}>rawalpindi</MenuItem>
-                <MenuItem value={"peshawar"}>peshawar</MenuItem>
+                <MenuItem value={"Rawalpindi"}>rawalpindi</MenuItem>
+                <MenuItem value={"Peshawar"}>peshawar</MenuItem>
               </Select>
             </FormControl>
           </div>
@@ -92,7 +92,7 @@ const SearchDiaries = () => {
               return <Eachpost post={post} />;
             })}
           </div>
-        </>
+        </div>
       ) : (
         <div className="spin">
           <CircularProgress />

@@ -18,8 +18,7 @@
   padding: 10px 200px 40px 200px;
   gap: 10px;
 }
-.imageBox {
-}
+
 .bgInbonx1 {
   width: 100%;
   height: 100%;
@@ -116,7 +115,7 @@
   position: sticky;
   top: 16%;
   position: sticky;
-  padding:20px;
+  padding: 20px;
 }
 .startday {
   width: 100%;
@@ -221,7 +220,6 @@
   .listingContentContainer {
     padding: 0;
     display: block;
-    
   }
   .listingBottom {
     padding: 0 !important;
@@ -253,7 +251,7 @@
   .listingBottom {
     display: block;
   }
-  .listingContentContainerCardRight{
+  .listingContentContainerCardRight {
     width: 100%;
   }
 }
