@@ -15,7 +15,6 @@ import {
 	CreateDiary,
 	Chat
 } from './features';
-import { AllChats } from './features/chat';
 
 function App() {
 	return (
@@ -24,11 +23,11 @@ function App() {
 				<NavBar />
 				<Switch>
 					<Route path="/" exact component={Home}></Route>
-					<Route path="/register" component={SignUp} />
-					<Route path="/login" component={Login} />
-					<Route path="/profile" component={Profile} />
-					<Route path="/newListing" component={NewListing} />
-					<Route path="/myListings" component={MyListings} />
+					<Route exact path="/register" component={SignUp} />
+					<Route exact path="/login" component={Login} />
+					<Route exact path="/profile" component={Profile} />
+					<Route exact path="/newListing" component={NewListing} />
+					<Route exact path="/myListings" component={MyListings} />
 					<Route
 						exact
 						path="/listing/:listingId"
