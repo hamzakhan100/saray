@@ -11,17 +11,21 @@ const SAMPLE_CHATS = [
 		_id: '1',
 		participant: {
 			name: 'Hamad Safdar',
-			imageUrl: 'https://timesofindia.indiatimes.com/photo/61237190.cms',
+			imageUrl:
+				'https://firebasestorage.googleapis.com/v0/b/saraay-363e2.appspot.com/o/profile%2Fava.jpg?alt=media&token=645b287f-8394-4cb6-8119-9a54de06e952',
 			email: 't@t.com'
-		}
+		},
+		displayMessage: 'Hello!!'
 	},
 	{
 		_id: '2',
 		participant: {
 			name: 'Hamad Safdar',
-			imageUrl: 'https://timesofindia.indiatimes.com/photo/61237190.cms',
+			imageUrl:
+				'https://firebasestorage.googleapis.com/v0/b/saraay-363e2.appspot.com/o/profile%2Fava.jpg?alt=media&token=645b287f-8394-4cb6-8119-9a54de06e952',
 			email: 't@t.com'
-		}
+		},
+		displayMessage: 'Hey! There?'
 	}
 ];
 
