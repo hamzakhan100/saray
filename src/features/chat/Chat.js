@@ -38,9 +38,9 @@ export default function Chat(props) {
 	return (
 		<div className="chat-container">
 			{currentTab === tabNames.list ? (
-				<ChatList chatList={SAMPLE_CHATS} />
+				<ChatList chatList={SAMPLE_CHATS} onClick={showChatBox} />
 			) : (
-				<ChatBox />
+				<ChatBox onBack={showChatList} />
 			)}
 		</div>
 	);

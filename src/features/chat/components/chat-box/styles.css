@@ -1,0 +1,23 @@
+.conversation-container {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+}
+
+.conversation-container .top-bar {
+	flex: 1;
+	background-color: white;
+	border: 1px solid black;
+}
+
+.message-list-container {
+	flex: 10;
+	background-color: white;
+	border: 1px solid black;
+}
+
+.message-input {
+	flex: 1;
+	background-color: white;
+	border: 1px solid black;
+}
