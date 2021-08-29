@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     minWidth: 500,
   },
-
+ 
 }));
 
 const SearchDiaries = () => {
@@ -62,7 +62,7 @@ const SearchDiaries = () => {
 			setCity(event.target.value);
 		};
 
-    dropdataSearch = post.filter((item) => {
+    dropdataSearch = posts.filter((item) => {
       return Object.keys(item).some((key) =>
         item[key]
           .toString()
@@ -73,7 +73,7 @@ const SearchDiaries = () => {
   }
   return (
     <div>
-      {post != null ? (
+      {posts.length != null ? (
         <div>
           <div style={{display:"flex",justifyContent:"center"}}className="searchdiary-main">
             <Button className="button" onClick={handleOpen}></Button>
@@ -102,7 +102,7 @@ const SearchDiaries = () => {
           </div>
           <div className="eachpostmain">
             {dropdataSearch.map((post) => {
-              return <Eachpost post={post} />;
+              return <Eachpost post={post} onClick={handleOnClick} />
             })}
           </div>
         </div>

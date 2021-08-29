@@ -19,7 +19,17 @@ html{
 	z-index: -1;
 	background-color: lightgrey;
 }
+.homeContent{
+	position: absolute;
+	top:30%;
+	width: 100%;
+	
+}
 #root{
 	height: 100%;
 	width: 100%;
+}
+.homeContentWrapper{
+	padding: 0 200px 0 200px;
+	
 }
