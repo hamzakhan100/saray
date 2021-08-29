@@ -1,5 +1,5 @@
 import "./Home.css";
-import kk from "./kk.jpg"
+import kk from "../kk.jpg"
 
 import SearchBar from "../SearchBar/SearchBar"
 
