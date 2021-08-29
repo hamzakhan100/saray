@@ -1,0 +1,51 @@
+.conversation-container {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+}
+
+.conversation-container .top-bar {
+	flex: 1;
+	background-color: white;
+	border: 1px solid black;
+}
+
+.message-list-container {
+	flex: 10;
+	max-height: 535px;
+	overflow-y: scroll;
+	background-color: white;
+	border: 1px solid black;
+}
+
+.message-input {
+	flex: 1;
+	background-color: white;
+	border: 1px solid black;
+}
+
+.message {
+	display: flex;
+	flex: 1;
+	padding: 20;
+	
+}
+.recieved {
+	justify-content: left;
+}
+
+.sent {
+	justify-content: right;
+}
+
+.message-text {
+	display: flex;
+	padding: 5px;
+	width: 40%;
+	justify-content: center;
+	align-items: center;
+	border: 2px solid black;
+	border-radius: 10%;
+	margin: 10px;
+	word-wrap: break-word;
+}

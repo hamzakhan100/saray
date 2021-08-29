@@ -5,6 +5,7 @@ import './chat.css';
 import useChat from './useChat';
 import { useTabs, tabNames } from './hooks';
 import { ChatBox, ChatList } from './components';
+import useChats from './hooks/useChats';
 
 const SAMPLE_CHATS = [
 	{
@@ -31,38 +32,22 @@ const SAMPLE_CHATS = [
 
 export default function Chat(props) {
 	const { currentTab, showChatBox, showChatList } = useTabs();
+	const { chats } = useChats();
+	const [selectedChat, setSelectedChat] = useState();
 	const { chat, sendMessage } = useChat();
-	const [message, setMessage] = useState('');
-	const currentEmail = JSON.parse(localStorage.getItem('user')).email;
+
+	const handleChatClick = (chatId) => {
+		setSelectedChat(chats.find((chat) => chat._id === chatId));
+		showChatBox();
+	};
 
 	return (
 		<div className="chat-container">
 			{currentTab === tabNames.list ? (
-				<ChatList chatList={SAMPLE_CHATS} />
+				<ChatList chatList={chats} onClick={handleChatClick} />
 			) : (
-				<ChatBox />
+				<ChatBox chat={selectedChat} onBack={showChatList} />
 			)}
 		</div>
 	);
 }
-
-// const renderMessages = () => {
-// 	const sortedMessages = chat.messages.sort((a, b) => {
-// 		return new Date(b.createdAt) - new Date(a.createdAt);
-// 	});
-// 	return sortedMessages.map((message) => (
-// 		<div key={message._id} className="message-container">
-// 			<div
-// 				className={
-// 					message?.author?.email === currentEmail
-// 						? 'sent'
-// 						: 'recieved'
-// 				}
-// 			>
-// 				{message.body}
-// 			</div>
-// 		</div>
-// 	));
-// };
-
-// const renderChatBox = () => {};

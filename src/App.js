@@ -12,8 +12,7 @@ import {
 	Listing,
 	SearchDiaries,
 	ViewDiary,
-	CreateDiary,
-	Chat
+	CreateDiary
 } from './features';
 
 function App() {
@@ -41,7 +40,6 @@ function App() {
 					/>
 					<Route path="/createDiary" component={CreateDiary} />
 					{/* <Route exact path="/chat" component={AllChats} /> */}
-					<Route exact path="/chat" component={Chat} />
 				</Switch>
 			</Router>
 		</MuiPickersUtilsProvider>

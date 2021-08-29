@@ -1,7 +1,7 @@
 .chat-container {
 	display: flex;
 	flex: 1;
-	flex-direction: column-reverse;
+	flex-direction: column;
 	margin-top: 70px;
 }
 
