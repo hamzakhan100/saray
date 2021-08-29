@@ -22,10 +22,7 @@ function ChatListItem({ chatItem, onClick }) {
 	return (
 		<div className="item" onClick={onClick}>
 			<div className="avatar-container">
-				<Avatar
-					style={{ width: 80, height: 80 }}
-					src={chatItem.imageUrl}
-				/>
+				<Avatar style={{ width: 80, height: 80 }} />
 			</div>
 			<div className="details">
 				<p className="title">{chatItem.participant.name}</p>
