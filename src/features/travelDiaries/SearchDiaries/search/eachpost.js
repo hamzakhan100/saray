@@ -1,11 +1,12 @@
+
 import React from "react";
 import { Container, Col, Row } from "reactstrap";
 import { useHistory } from "react-router-dom";
 
+
 // import "./style.css"
 const SearchDiaries = (props) => {
-  const { post } = props;
-
+	const { post, onClick } = props;
   const history = useHistory();
   const openPage = (id) => {
     history.pushState("/viewDiary");
@@ -54,5 +55,6 @@ const SearchDiaries = (props) => {
       </div>
     </>
   );
+
 };
 export default SearchDiaries;

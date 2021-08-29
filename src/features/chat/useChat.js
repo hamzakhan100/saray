@@ -55,9 +55,9 @@ export default function useChat() {
 
 	const getConversationMessages = async () => {
 		try {
-			const { conversation } = await api.getMessages(conversationId);
-			console.log(conversation);
-			setChat(conversation);
+			// const { conversation } = await api.getMessages(conversationId);
+			// console.log(conversation);
+			// setChat(conversation);
 		} catch (error) {
 			setError(error);
 		}

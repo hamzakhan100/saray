@@ -1,15 +1,18 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import Button from "@material-ui/core/Button";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import "./style.css";
-import post from "../../../post.json";
-import Eachpost from "./search/eachpost";
+import React, { useEffect } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import './style.css';
+import post from '../../../post.json';
+import Eachpost from './search/eachpost';
+import api from '../api';
+import { useHistory } from 'react-router-dom';
 const useStyles = makeStyles((theme) => ({
+
   button: {
     display: "block",
     marginTop: theme.spacing(2),
@@ -18,36 +21,46 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     minWidth: 500,
   },
+
 }));
 
 const SearchDiaries = () => {
-  const classes = useStyles();
-  const [city, setCity] = React.useState("");
-  const [open, setOpen] = React.useState(false);
+	const classes = useStyles();
+	const history = useHistory();
+	const [city, setCity] = React.useState('');
+	const [open, setOpen] = React.useState(false);
+	const [posts, setPosts] = React.useState([]);
 
-  let handleOpen;
-  let handleChange;
-  let handleClose;
-  let dropdataSearch;
+	useEffect(() => {
+		(async () => {
+			try {
+				const result = await api.getBlogs();
+				setPosts(result.data.blogs);
+			} catch (error) {
+				alert('Error');
+			}
+		})();
+	}, []);
 
-  if (post == null) {
-    return (
-      <div className="spin">
-        <CircularProgress />
-      </div>
-    );
-  } else {
-    handleChange = (event) => {
-      setCity(event.target.value);
-    };
+	let handleOpen;
+	let handleChange;
+	let handleClose;
+	let dropdataSearch;
 
-    handleClose = () => {
-      setOpen(false);
-    };
+	const handleOnClick = (blogId) => {
+		history.push('/viewDiary/' + blogId);
+	};
 
-    handleOpen = () => {
-      setOpen(true);
-    };
+	if (post == null) {
+		return (
+			<div className="spin">
+				<CircularProgress />
+			</div>
+		);
+	} else {
+		handleChange = (event) => {
+			setCity(event.target.value);
+		};
 
     dropdataSearch = post.filter((item) => {
       return Object.keys(item).some((key) =>
@@ -100,6 +113,7 @@ const SearchDiaries = () => {
       )}
     </div>
   );
+
 };
 
 export default SearchDiaries;
