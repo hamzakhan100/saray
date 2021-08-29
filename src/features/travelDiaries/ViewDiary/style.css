@@ -1,35 +1,44 @@
 .d-flex {
   display: flex;
+  justify-content: center;
 }
 .main {
   padding: 5%;
   margin-top: 3%;
+  font-family: 'Noto Sans JP', sans-serif;
 }
 .left-section {
   width: 70%;
 }
+.line {
+  margin-top: 80px;
+  border-bottom: 0px;
+  border-color: rgb(221, 221, 221);
+}
 
 .blog-layout {
-  border: 0.1rem solid rgba(0, 47, 52, 0.2);
 }
 .blog-title > h1 {
-  font-family: "roboto";
+  font-family: 'Noto Sans JP', sans-serif;
   font-size: 2.5em;
   margin-left: 2%;
 }
 .blog-img {
   padding: 2%;
+  display: flex;
+  justify-content: center;
 }
 .blog-img > img {
   width: 100%;
+  border-radius: 5px;
 }
 .blog-contant > p {
   width: 95%;
   margin-left: 2%;
-  font-family: "roboto";
+  font-family: 'Noto Sans JP', sans-serif;
 }
 .blog-contant > h2 {
-  font-family: "roboto";
+  font-family: 'Noto Sans JP', sans-serif;
   margin-left: 2%;
 }
 .blog-location {

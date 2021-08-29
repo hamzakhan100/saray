@@ -65,5 +65,6 @@ const ViewDiary = () => {
 			</div> */}
 		</div>
 	);
+
 };
 export default ViewDiary;
