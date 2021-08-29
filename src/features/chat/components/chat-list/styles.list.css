@@ -6,12 +6,29 @@
 	border: 2px solid black;
 }
 
-.item .avatar {
+.item .avatar-container {
 	flex: 1;
 	background-color: aqua;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .item .details {
 	flex: 3;
+	display: flex;
+	flex-direction: column;
 	background-color: blue;
+	justify-content: center;
+	align-items: center;
+}
+
+.item .details .title {
+	font-size: 14;
+	font-weight: bold;
+}
+
+.item .details .sub-title {
+	font-size: small;
+	font-style: italic;
 }

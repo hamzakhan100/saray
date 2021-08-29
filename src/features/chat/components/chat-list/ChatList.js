@@ -1,3 +1,4 @@
+import { Avatar } from '@material-ui/core';
 import React from 'react';
 
 import './styles.list.css';
@@ -5,6 +6,7 @@ import './styles.list.css';
 export default function ChatList({ chatList }) {
 	return (
 		<div>
+			<div></div>
 			{chatList.map((chat) => (
 				<ChatListItem key={chat._id} chatItem={chat} />
 			))}
@@ -15,12 +17,15 @@ export default function ChatList({ chatList }) {
 function ChatListItem({ chatItem }) {
 	return (
 		<div className="item">
-			<div className="avatar">
-				<img src={chatItem.imageUrl} alt="profile" />
+			<div className="avatar-container">
+				<Avatar
+					style={{ width: 80, height: 80 }}
+					src={chatItem.imageUrl}
+				/>
 			</div>
 			<div className="details">
-				<div>Name</div>
-				<div>subtitle</div>
+				<p className="title">{chatItem.participant.name}</p>
+				<p className="sub-title">{chatItem.displayMessage}</p>
 			</div>
 		</div>
 	);
