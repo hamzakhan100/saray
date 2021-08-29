@@ -6,8 +6,7 @@ import './styles.list.css';
 export default function ChatList({ chatList, onClick }) {
 	return (
 		<div>
-			<div></div>
-			{chatList.map((chat) => (
+			{chatList?.map((chat) => (
 				<ChatListItem
 					key={chat._id}
 					chatItem={chat}
@@ -19,14 +18,16 @@ export default function ChatList({ chatList, onClick }) {
 }
 
 function ChatListItem({ chatItem, onClick }) {
+	const onChatClick = () => {
+		onClick && onClick(chatItem._id);
+	};
 	return (
-		<div className="item" onClick={onClick}>
+		<div className="item" onClick={onChatClick}>
 			<div className="avatar-container">
 				<Avatar style={{ width: 80, height: 80 }} />
 			</div>
 			<div className="details">
 				<p className="title">{chatItem.participant.name}</p>
-				{/* <p className="sub-title">{chatItem.displayMessage}</p> */}
 			</div>
 		</div>
 	);

@@ -1,12 +1,9 @@
-import { PersonalVideo } from '@material-ui/icons';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 
 import api from './api';
 import socket from './socket';
 
-export default function useChat() {
-	const { conversationId = '61273062565e95163aff03ec' } = useParams();
+export default function useChat(chatId) {
 	const [chat, setChat] = useState({
 		_id: '',
 		participants: [],
@@ -55,9 +52,8 @@ export default function useChat() {
 
 	const getConversationMessages = async () => {
 		try {
-			// const { conversation } = await api.getMessages(conversationId);
-			// console.log(conversation);
-			// setChat(conversation);
+			const { conversation } = await api.getMessages(chatId);
+			setChat(conversation);
 		} catch (error) {
 			setError(error);
 		}

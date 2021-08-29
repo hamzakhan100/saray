@@ -5,12 +5,12 @@ import Topbar from './TopBar';
 import './styles.css';
 import MessageInput from './MessageInput';
 
-export default function ChatBox({ onBack, onSend, messages }) {
+export default function ChatBox({ onBack, onSend, chat }) {
 	return (
 		<div className="conversation-container">
 			<Topbar onBack={onBack} />
 			<div className="message-list-container">
-				{messages?.map((m) => (
+				{chat?.messages?.map((m) => (
 					<Message message={m} />
 				))}
 			</div>

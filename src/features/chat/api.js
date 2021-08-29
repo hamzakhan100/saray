@@ -22,7 +22,7 @@ async function getMessages(conversationId) {
 async function getAllConversations() {
 	try {
 		const token = localStorage.getItem('token');
-		const result = await axios.get(config.baseUrl + '/chat', {
+		const result = await axios.get(config.baseUrl + '/chat/all', {
 			headers: { Authorization: 'Bearer ' + token }
 		});
 		return result.data;
