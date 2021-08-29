@@ -28,6 +28,9 @@ const Listing = () => {
   const { listingId } = useParams();
   const [listing, setListing] = useState({});
   const [amenities, setAmenities] = useState([]);
+  const handleClick = () => {
+    console.log("Sunni Ye Le");
+  };
 
   useEffect(() => {
     (async () => {
@@ -203,6 +206,30 @@ const Listing = () => {
                 )}
               </div>
             </div>
+            <hr
+              style={{ borderBottom: "0px", borderColor: "rgb(221, 221, 221)" }}
+            />
+            <div style={{ marginTop: "40px" }} className="listingContentHost">
+              <div className="listingContentHostImageContainer">
+                <img
+                  className="listingContentHostImage"
+                  src={listing?.host?.imageUrl}
+                />
+              </div>
+              <div className="listingContentHostDetails">
+                <p style={{ fontWeight: "500" }}>
+                  Chat with your Host,<b>{listing?.host?.name}</b>
+                </p>
+                <Button
+                  onClick={handleClick}
+                  style={{ width: "50%", marginTop: "10px" }}
+                  variant="contained"
+                >
+                  Send a message
+                </Button>
+              </div>
+              {/* <vr /> */}
+            </div>
           </div>
         </div>
 
@@ -264,7 +291,7 @@ const Listing = () => {
       <div className="listingBottom">
         <div className="listingBottomLeft "></div>
 
-        <div className="listingBottomRight">.</div>
+        <div className="listingBottomRight"></div>
       </div>
     </div>
   );

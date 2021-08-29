@@ -2,7 +2,7 @@ import './profile.css';
 import { Avatar } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 
-import { Chat } from '../../chat';
+import { Chat } from '../../chat'; 
 
 const Profile = () => {
 	return (

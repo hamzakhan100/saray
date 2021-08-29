@@ -9,7 +9,8 @@ const SearchDiaries = (props) => {
 	const { post, onClick } = props;
   const history = useHistory();
   const openPage = (id) => {
-    history.pushState("/viewDiary");
+    onClick(post._id)
+    // history.push("/viewDiary");
   };
 
   return (
@@ -21,7 +22,7 @@ const SearchDiaries = (props) => {
               <div className="card-main">
                 <div className="card">
                   <div className="cardImg">
-                    <img src={post.image} />
+                    <img src={post.imageUrl} />
                   </div>
                   <div className="card-bottom">
                     <div className="cardname">
