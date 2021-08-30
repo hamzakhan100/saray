@@ -6,6 +6,7 @@ import useChat from './useChat';
 import { useTabs, tabNames } from './hooks';
 import { ChatBox, ChatList } from './components';
 import useChats from './hooks/useChats';
+import { useSocket } from './hooks';
 
 const SAMPLE_CHATS = [
 	{
@@ -34,11 +35,25 @@ export default function Chat(props) {
 	const { currentTab, showChatBox, showChatList } = useTabs();
 	const { chats } = useChats();
 	const [selectedChat, setSelectedChat] = useState({});
-	const { chat, sendMessage } = useChat();
+	const onMessage = (message) => {
+		setSelectedChat((prev) => ({
+			...prev,
+			messages: [...prev?.messages, message]
+		}));
+	};
+	const { sendMessage } = useSocket({ onMessage });
 
 	const handleChatClick = (chatId) => {
 		setSelectedChat(chats.find((chat) => chat._id === chatId));
 		showChatBox();
+	};
+
+	const onSend = ({ body }) => {
+		const toEmail = selectedChat?.participants?.find((p) => {
+			const currentEmail = JSON.parse(localStorage.getItem('user')).email;
+			return p?.email !== currentEmail;
+		}).email;
+		sendMessage({ to: toEmail, body });
 	};
 
 	return (
@@ -46,7 +61,11 @@ export default function Chat(props) {
 			{currentTab === tabNames.list ? (
 				<ChatList chatList={chats} onClick={handleChatClick} />
 			) : (
-				<ChatBox chat={selectedChat} onBack={showChatList} />
+				<ChatBox
+					chat={selectedChat}
+					onBack={showChatList}
+					onSend={onSend}
+				/>
 			)}
 		</div>
 	);

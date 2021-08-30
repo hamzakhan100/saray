@@ -29,7 +29,7 @@ function Message({ message }) {
 					: 'message recieved'
 			}
 		>
-			<div className="message-text">{message.text}</div>
+			<div className="message-text">{message.body}</div>
 		</div>
 	);
 }

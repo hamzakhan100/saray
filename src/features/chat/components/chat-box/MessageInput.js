@@ -9,7 +9,7 @@ export default function MessageInput({ onSend }) {
 	};
 	const onClick = () => {
 		setMessage('');
-		onSend && onSend(message);
+		onSend && onSend({ body: message });
 	};
 	return (
 		<div className="message-input">
