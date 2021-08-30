@@ -40,7 +40,7 @@ export default function useChat(chatId) {
 	};
 
 	useEffect(() => {
-		getConversationMessages();
+		// getConversationMessages();
 		socket.emit('register');
 		socket.on('new-message', onMessageRecieve);
 

@@ -8,7 +8,8 @@ export default function useChats() {
 		(async () => {
 			try {
 				const result = await api.getAllConversations();
-				setChats(result.data?.conversations ?? []);
+				// console.log(result.data.convers);
+				setChats(result.data?.conversations);
 			} catch (error) {
 				alert(error);
 			}

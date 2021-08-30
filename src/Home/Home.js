@@ -1,5 +1,4 @@
 import "./Home.css";
-
 import SearchBar from "../SearchBar/SearchBar";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -36,7 +35,7 @@ const Home = () => {
   const handleCityChange = (event) => {
     setCity(event.target.value);
   };
-  const handleSearch = (e) => {
+  const handleSearch = async(e) => {
     e.preventDefault();
     try {
       const result = await api.getBookingsByCity(city);
@@ -56,12 +55,12 @@ const Home = () => {
             {searched.map((listing) => (
               <Card
                 className={classes.root}
-                onClick={() => onListingClick(listing._id)}
+                onClick={() => onListingClick(listing?._id)}
               >
                 <CardActionArea>
                   <CardMedia
                     className={classes.media}
-                    image={listing.imagesUrl[0]}
+                    image={listing?.images[0]}
                     title="Contemplative Reptile"
                   />
                   <CardContent>

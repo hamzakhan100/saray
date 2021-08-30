@@ -1,25 +1,18 @@
-import { useEffect } from 'react';
 
-import socket from '../socket';
+import { useEffect } from "react";
 
-export default function useSocket({ onMessage }) {
-	useEffect(() => {
-		socket.emit('register');
-		socket.on('new-message', onMessage);
+import socket from "../socket";
 
-		return () => {
-			socket.off('new-message', onMessage);
-		};
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+export default function useSocket({ onMessage = () => {} }) {
+  useEffect(() => {
+    socket.emit("register");
+    socket.on("new-message", onMessage);
+    return () => socket.off("new-message", onMessage);
+  }, []);
 
-	const sendMessage = ({ to, body }) => {
-		socket.emit(
-			'message',
-			{ to, body },
-			/*setting message on acknowledgement */ onMessage
-		);
-	};
+  const sendMessage = ({ to, body }) => {
+    socket.emit("message", { to, body }, (onMessage = () => {}));
+  };
+  return { sendMessage };
 
-	return { sendMessage };
 }
