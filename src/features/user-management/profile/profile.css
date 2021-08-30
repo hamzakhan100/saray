@@ -18,20 +18,23 @@
 .left {
   display: flex;
   flex-direction: column;
-  background-color: lightgreen;
+  /* background-color: lightgreen; */
   width: 45%;
   justify-content: center;
   align-content: center;
 }
 .mid {
   display: flex;
-  background-color: lightpink;
+  /* background-color: lightpink; */
   width: 100%;
 }
 .right {
   display: flex;
-  background-color: lightsalmon;
+  /* background-color: lightsalmon; */
   width: 45%;
+  /* padding: 10px 10px 0 10px; */
+  border-left: 1px solid lightgrey;
+   
 }
 
 .avatarContainer {
