@@ -1,3 +1,4 @@
+
 import { useEffect } from "react";
 
 import socket from "../socket";
@@ -13,4 +14,5 @@ export default function useSocket({ onMessage = () => {} }) {
     socket.emit("message", { to, body }, (onMessage = () => {}));
   };
   return { sendMessage };
+
 }
