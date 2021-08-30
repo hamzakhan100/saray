@@ -1,21 +1,27 @@
 .form-main {
   padding: 5%;
+  height: 75%;
 }
 
 .form-layout {
-  border: 0.1rem solid rgba(0, 47, 52, 0.2);
+  /* border: 0.1rem solid rgba(0, 47, 52, 0.2); */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .form-heading {
   text-align: center;
 }
 .form-heading > h1 {
-  font-family: "roboto";
+  /* font-family: "roboto"; */
 }
 
 .aaa {
-  width: 80%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
+  height: 80%;
+
 }
 
 .root {
@@ -34,10 +40,21 @@
   min-width: 120;
   /* minWidth: 120, */
 }
+.ql-toolbar.ql-snow {
+ display: flex;
+ justify-content: center;
+  box-sizing: border-box;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  padding: 8px;
+  border: none;
+  border-bottom: 1px solid lightgrey;
+}
 
 .editor-layout {
-  border: 0.1rem solid rgba(0, 47, 52, 0.2);
-  height: 200px;
+  /* border: 0.1rem solid rgba(0, 47, 52, 0.2); */
+  height: 400px;
+  display: flex;
+  flex-direction: column;
 }
 .picture {
   margin-top: 4% !important;

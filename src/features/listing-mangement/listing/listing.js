@@ -21,15 +21,21 @@ import {
   KeyboardTimePicker,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import api from "../myLisitngs/api";
+import bApi from "./api";
+import { useSocket } from "../../chat/hooks";
 
 const Listing = () => {
   const { listingId } = useParams();
   const [listing, setListing] = useState({});
   const [amenities, setAmenities] = useState([]);
+  const history = useHistory();
+  const { sendMessage } = useSocket({});
+
   const handleClick = () => {
-    console.log("Sunni Ye Le");
+    history.push("/profile");
+    listing?.host && sendMessage({ to: listing?.host.email, body: "Hello" });
   };
 
   useEffect(() => {
@@ -66,6 +72,11 @@ const Listing = () => {
     },
     rate: "44",
   };
+
+  const onClick = () => {
+    history.push("/profile");
+  };
+
   const [checkinDate, setcheckinDate] = React.useState(() => new Date());
   const [checkoutDate, setcheckoutDate] = useState(() => checkinDate);
 
@@ -78,6 +89,23 @@ const Listing = () => {
   };
   //   import { useHistory } from "react-router-dom";
   // import { Link } from "react-router-dom";
+
+  const onBooking = async () => {
+    try {
+      const result = await bApi.confirmBooking(listing._id, {
+        startDate: checkinDate,
+        endDate: checkoutDate,
+      });
+      if (result.data.message === "UNAVAILABLE") {
+        alert("Your dates are not available. Select any others.");
+        return;
+      }
+      history.push("/profile");
+      alert("Booking Confirmed");
+    } catch (error) {
+      alert("Error confirming Booking..");
+    }
+  };
 
   return (
     <div className="listingContainer">
@@ -280,7 +308,11 @@ const Listing = () => {
                 <p>$44</p>
               </div>
               <div className="listingButton">
-                <Button id="listingbutton" variant="contained">
+                <Button
+                  onClick={onBooking}
+                  id="listingbutton"
+                  variant="contained"
+                >
                   Confirm Booking
                 </Button>
               </div>
