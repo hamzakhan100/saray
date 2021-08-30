@@ -33,7 +33,7 @@ const SAMPLE_CHATS = [
 export default function Chat(props) {
 	const { currentTab, showChatBox, showChatList } = useTabs();
 	const { chats } = useChats();
-	const [selectedChat, setSelectedChat] = useState();
+	const [selectedChat, setSelectedChat] = useState({});
 	const { chat, sendMessage } = useChat();
 
 	const handleChatClick = (chatId) => {
